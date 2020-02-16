@@ -27,7 +27,7 @@ function clearOutput() {
 function equalBtnAction(){
   equation[equation.length] = Number(output.textContent);
   operate();
-  output.textContent = result;
+  output.textContent = Math.round((result + Number.EPSILON)*10000)/10000; //Rounds number to 4 decimal places
 }
 function backspaceBtnAction(){
   output.textContent = output.textContent.slice(-output.textContent.length, -1);
