@@ -34,14 +34,13 @@ function btnsAction(btn) {
   } else if (btn.textContent === 'AC') {
     clearOutput();
     equation = [];
+    result = 0;
   } else if (btn.textContent === '<--') {
-    backspaceBtnAction()
+    backspaceBtnAction();
   } else if (btn.textContent === '=') {
-    equalBtnAction()
-  } else {
-    equation[equation.length] = Number(output.textContent);
-    equation[equation.length] = btn.textContent;
-    clearOutput();
+    equalBtnAction();
+  } else if(operators.includes(btn.textContent)){
+    operatorsBtnsAction(btn);
   }
 }
 function equalBtnAction() {
@@ -53,6 +52,15 @@ function backspaceBtnAction() {
   output.textContent = output.textContent.slice(-output.textContent.length, -1);
   if (output.textContent.slice(-1) === '.') {
     pointBtn.disabled = false;
+  }
+}
+function operatorsBtnsAction(btn){
+  if(output.textContent === ''){
+    equation[equation.length - 1] = btn.textContent;
+  }else {
+    equation[equation.length] = Number(output.textContent);
+    equation[equation.length] = btn.textContent;
+    clearOutput();
   }
 }
 function operate() {
