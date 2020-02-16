@@ -1,25 +1,27 @@
 /* CSS for PROJECT: CALCULATOR */
 html {
-    /* background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 10%, #e2c9cc 15%, #e7627d 28%, #b8235a 45%, #801357 63%, #3d1635 84%, #1c1a27 100%); */
-    /* background: linear-gradient(0deg, #1CB5E0 0%, #000851 100%); */
-    background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: fit-content;
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
-    font-family: 'Cute Font', cursive;  
-    font-size: 1.8rem;
-    color:white;
+  /* background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 10%, #e2c9cc 15%, #e7627d 28%, #b8235a 45%, #801357 63%, #3d1635 84%, #1c1a27 100%); */
+  /* background: linear-gradient(0deg, #1CB5E0 0%, #000851 100%); */
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Cute Font', cursive;  
+  font-size: 1.8rem;
+  color:white;
 }
 body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 button{
   width: 100%;
@@ -32,24 +34,24 @@ button{
   background: rgba(0, 0, 0, 0.3);
 }
 .container{
-    width: 50%;
+  width: 50%;
 }
 .title{
-    margin: 0;
-    text-align: center;
-    width: 100%;
+  margin: 0;
+  text-align: center;
+  width: 100%;
 }
 .calculator {
-    background: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 20rem;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 20rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 .screen{
   width: 100%;
-  height: 5rem;
+  height: 8rem;
   margin: 0;
   display: flex;
   flex-direction: row;
