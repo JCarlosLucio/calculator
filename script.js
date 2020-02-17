@@ -2,6 +2,7 @@
 const btns = document.querySelectorAll('button');
 const backspaceBtn = document.querySelector('#backspace');
 const equalBtn = document.querySelector('#equal');
+const equationLog = document.querySelector('#equation-log');
 const output = document.querySelector('#output');
 const pointBtn = document.querySelector('#point');
 const operators = ['*', '/', '-', '+'];
@@ -33,17 +34,22 @@ function btnsAction(btn) {
     pointBtn.disabled = true;
   } else if (btn.textContent === 'AC') {
     clearOutput();
+    equationLog.textContent = '';
     equation = [];
     result = 0;
   } else if (btn.textContent === '<--') {
     backspaceBtnAction();
   } else if (btn.textContent === '=') {
     equalBtnAction();
-  } else if(operators.includes(btn.textContent)){
+  } else if (operators.includes(btn.textContent)) {
     operatorsBtnsAction(btn);
   }
 }
 function equalBtnAction() {
+  if (equationLog.textContent.includes('=')) {
+    equationLog.textContent = equationLog.textContent.slice(equationLog.textContent.search('=') + 1);
+  } 
+  equationLog.textContent += output.textContent + '=';
   equation[equation.length] = Number(output.textContent);
   operate();
   output.textContent = Math.round((result + Number.EPSILON) * 10000) / 10000; //Rounds number to 4 decimal places
@@ -54,18 +60,21 @@ function backspaceBtnAction() {
     pointBtn.disabled = false;
   }
 }
-function operatorsBtnsAction(btn){
-  if(output.textContent === ''){
+function operatorsBtnsAction(btn) {
+  if (output.textContent === '') {
     equation[equation.length - 1] = btn.textContent;
+    equationLog.textContent = equationLog.textContent.slice(-output.textContent.length, -1) + btn.textContent;
   }else {
     equation[equation.length] = Number(output.textContent);
     equation[equation.length] = btn.textContent;
+    equationLog.textContent += output.textContent;
+    equationLog.textContent += btn.textContent;
     clearOutput();
   }
 }
 function operate() {
   operators.forEach((op) => {
-    while (equation.includes(op)){
+    while (equation.includes(op)) {
       i = equation.indexOf(op);
       if (op === '*') {
         result = multiply(equation[i - 1], equation[i + 1]);
