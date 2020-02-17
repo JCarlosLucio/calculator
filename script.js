@@ -61,7 +61,14 @@ function backspaceBtnAction() {
   }
 }
 function operatorsBtnsAction(btn) {
-  if (output.textContent === '') {
+  if (equationLog.textContent.includes('=')) {
+    equationLog.textContent = equationLog.textContent.slice(equationLog.textContent.search('=') + 1);
+    equation[equation.length] = Number(output.textContent);
+    equation[equation.length] = btn.textContent;
+    equationLog.textContent += output.textContent;
+    equationLog.textContent += btn.textContent;
+    clearOutput();
+  } else if (output.textContent === '') {
     equation[equation.length - 1] = btn.textContent;
     equationLog.textContent = equationLog.textContent.slice(-output.textContent.length, -1) + btn.textContent;
   }else {
@@ -73,6 +80,9 @@ function operatorsBtnsAction(btn) {
   }
 }
 function operate() {
+  //Loops through an array of operators in priority order, 
+  //if the equation array includes one, then it makes the operation of the adjacent numbers in the array,
+  //until there are no more operators of that kind.
   operators.forEach((op) => {
     while (equation.includes(op)) {
       i = equation.indexOf(op);
